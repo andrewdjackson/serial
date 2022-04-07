@@ -3,11 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/andrewdjackson/serial"
 	"log"
 	"strconv"
 	"strings"
-
-	"github.com/distributed/sers"
 )
 
 func main() {
@@ -37,12 +36,12 @@ func Main() error {
 
 	baudrate := int(baudrate64)
 
-	sp, err := sers.Open(sfn)
+	sp, err := serial.Open(sfn)
 	if err != nil {
 		return err
 	}
 
-	err = sp.SetMode(baudrate, 8, sers.N, 1, sers.NO_HANDSHAKE)
+	err = sp.SetMode(baudrate, 8, serial.N, 1, serial.NO_HANDSHAKE)
 	if err != nil {
 		return fmt.Errorf("error setting baud rate: %v", err)
 	}

@@ -3,11 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/andrewdjackson/serial"
 	"io"
 	"log"
 	"time"
-
-	"github.com/distributed/sers"
 )
 
 func main() {
@@ -40,7 +39,7 @@ func Main() error {
 	}
 	fn := flag.Args()[0]
 
-	f,err := sers.Open(fn)
+	f, err := serial.Open(fn)
 	if err != nil {
 		return err
 	}

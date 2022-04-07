@@ -1,6 +1,7 @@
+//go:build windows
 // +build windows
 
-package sers
+package serial
 
 // taken from https://github.com/tarm/goserial
 // and slightly modified

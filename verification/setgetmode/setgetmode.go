@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/distributed/sers"
+	"github.com/andrewdjackson/serial"
 	"log"
 )
 
@@ -29,21 +29,21 @@ func Main() error {
 		doset = true
 	}
 
-	setmode, err := sers.ParseModestring(modestring)
+	setmode, err := serial.ParseModestring(modestring)
 	if err != nil {
 		return err
 	}
 
 	fn := args[0]
 
-	sp, err := sers.Open(fn)
+	sp, err := serial.Open(fn)
 	if err != nil {
 		return err
 	}
 	defer sp.Close()
 
 	if doset {
-		err = sers.SetModeStruct(sp, setmode)
+		err = serial.SetModeStruct(sp, setmode)
 		if err != nil {
 			return err
 		}

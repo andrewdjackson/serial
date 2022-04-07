@@ -1,4 +1,4 @@
-package sers
+package serial
 
 import "testing"
 

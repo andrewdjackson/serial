@@ -1,6 +1,7 @@
+//go:build darwin || linux
 // +build darwin linux
 
-package sers
+package serial
 
 // Copyright 2012 Michael Meier. All rights reserved.
 // Use of this source code is governed by an MIT-style

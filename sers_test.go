@@ -1,11 +1,10 @@
-package sers_test
+package serial
 
 import (
 	"encoding/hex"
 	"fmt"
+	"go.bug.st/serial.v1"
 	"log"
-
-	"github.com/distributed/sers"
 )
 
 // This program opens a serial port, configurable by changing portname
@@ -25,7 +24,7 @@ func Example() {
 }
 
 func readFirstBytesFromPort(fn string) ([]byte, error) {
-	sp, err := sers.Open(fn)
+	sp, err := serial.Open(fn)
 	if err != nil {
 		return nil, err
 	}
@@ -33,7 +32,7 @@ func readFirstBytesFromPort(fn string) ([]byte, error) {
 
 	// 57600 baud, 8 data bits, no parity bit, 1 stop bit
 	// no handshake. non-standard baud rates are possible.
-	err = sp.SetMode(57600, 8, sers.N, 1, sers.NO_HANDSHAKE)
+	err = sp.SetMode(57600, 8, serial.N, 1, serial.NO_HANDSHAKE)
 	if err != nil {
 		return nil, err
 	}

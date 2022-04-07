@@ -1,11 +1,11 @@
 package main
 
 import (
-	"log"
-	"github.com/distributed/sers"
 	"flag"
-	"time"
 	"fmt"
+	"github.com/andrewdjackson/serial"
+	"log"
+	"time"
 )
 
 func main() {
@@ -15,29 +15,29 @@ func main() {
 	}
 }
 
-var ontime = flag.Duration("on",500*time.Millisecond,"on period")
+var ontime = flag.Duration("on", 500*time.Millisecond, "on period")
 var offtime = flag.Duration("off", 500*time.Millisecond, "off period")
 
 func Main() error {
 	flag.Parse()
 
-	args:=flag.Args()
+	args := flag.Args()
 	if len(args) < 1 {
 		return fmt.Errorf("please provide a serial file name")
 	} else if len(args) > 1 {
 		return fmt.Errorf("extraneous arguments")
 	}
 
-	fn:=args[0]
+	fn := args[0]
 
-	sp,err:=sers.Open(fn)
+	sp, err := serial.Open(fn)
 	if err != nil {
 		return err
 	}
 
 	for {
 		fmt.Printf("setting break\n")
-		err=sp.SetBreak(true)
+		err = sp.SetBreak(true)
 		if err != nil {
 			return err
 		}
