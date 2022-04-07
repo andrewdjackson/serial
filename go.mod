@@ -1,3 +1,3 @@
-module github.com/distributed/sers
+module github.com/andrewdjackson/serial
 
-go 1.11
+go 1.17
